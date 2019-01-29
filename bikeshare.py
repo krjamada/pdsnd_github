@@ -17,26 +17,26 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city = input('Choose a city between Chicago,New York City and Washington: ').lower()
     while city not in ['chicago','new york city','washington']:
             print('Please enter a valid city')
             city = input('Choose a city between Chicago,New York City and Washington: ').lower()
-            
+
     # TO DO: get user input for month (all, january, february, ... , june)
-    month = input('Which month would you like to explore between January and June.If you want to look at all months please enter all: ').lower()     
+    month = input('Which month would you like to explore between January and June.If you want to look at all months please enter all: ').lower()
     while month not in ['all', 'january', 'february', 'march', 'april', 'may', 'june']:
             print('Please enter a valid month')
-            month = input('Please choose between January and June.If you want to look at all months please enter all: ').lower()              
-            
+            month = input('Please choose between January and June.If you want to look at all months please enter all: ').lower()
+
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-    day = input('Which day would you like to explore .If you want to look at all days please enter all: ').lower()             
-    while day not in ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:  
+    day = input('Which day would you like to explore .If you want to look at all days please enter all: ').lower()
+    while day not in ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
             print('Please enter a valid day')
             day = input('Please enter a valid day.To look at all days please enter all: ').lower()
-            
-            
+
+
     print('-'*40)
     return city, month, day
 
@@ -78,10 +78,10 @@ def load_data(city, month, day):
         df = df[df['day_of_week'] == day.title()]
 
     return df
-   
+
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
-   
+
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
@@ -96,20 +96,20 @@ def time_stats(df):
     # TO DO: display the most common start hour
     common_hour = df['hour'].mode()[0]
     print('Most Common Start hour:', common_hour)
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
-    
+
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
     # TO DO: display most commonly used start station
     most_common_start_station = df['Start Station'].mode()[0]
     print('Most common start station:',most_common_start_station)
-    
+
     # TO DO: display most commonly used end station
     most_common_end_station = df['End Station'].mode()[0]
     print('Most common end station:',most_common_end_station)
@@ -117,7 +117,7 @@ def station_stats(df):
     # TO DO: display most frequent combination of start station and end station trip
     most_common_trip = 'From ' + df['Start Station'] + ' to ' +df['End Station']
     print('Most common trip:',most_common_trip.mode()[0])
-     
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -127,11 +127,11 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
     df['Duration'] =  df['End Time'] - df['Start Time']
-    
+
     # TO DO: display total travel time
     total_travel_time = df['Duration'].sum()
     print('Total Travel Time:',total_travel_time)
-    
+
     # TO DO: display mean travel time
     mean_travel_time = df['Duration'].mean()
     print('Mean Travel Time:',mean_travel_time)
@@ -145,16 +145,16 @@ def user_stats(df):
 
     print('\nCalculating User Stats...\n')
     start_time = time.time()
-    
+
     # TO DO: Display counts of user types
     user_types = df['User Type'].value_counts()
     print('Types of Users:',user_types)
-    
+
     # TO DO: Display counts of gender
-    if 'Gender' in df:    
+    if 'Gender' in df:
         genders = df['Gender'].value_counts()
         print('Gender Distribution:',genders)
-        
+
     # TO DO: Display earliest, most recent, and most common year of birth
     if 'Birth Year' in df:
         earliest_yob = int(df['Birth Year'].min())
@@ -163,24 +163,25 @@ def user_stats(df):
         print("Most Recent Birth Year: ",latest_yob)
         common_yob = int(df['Birth Year'].mode())
         print("Most Common Birth Year: ",common_yob)
-        
+
         print("\nThis took %s seconds." % (time.time() - start_time))
         print('-'*40)
 
-def raw_data(df): 
+# raw_data function is used to show raw data to the user when required
+def raw_data(df):
     '''Asks user if raw data are required and displays raw data if necessary.''' 
-    rows = 0 
-    while True: 
-            raw_data = input("Would you like to see the five entries of the raw data:").lower() 
-            if (raw_data == 'yes'): 
-                print(df[rows: rows + 5]) 
+    rows = 0
+    while True:
+            raw_data = input("Would you like to see the five entries of the raw data:").lower()
+            if (raw_data == 'yes'):
+                print(df[rows: rows + 5])
                 rows = rows + 5
-                print('-'*80) 
-                continue 
-            elif (raw_data == 'no'): 
-                break 
+                print('-'*80)
+                continue
+            elif (raw_data == 'no'):
+                break
             else: print('Invalid input!')
-                
+
 def main():
     while True:
         city, month, day = get_filters()
