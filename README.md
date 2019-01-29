@@ -4,7 +4,7 @@ Include the date you created this project and README file.
 ### Project Title: Bikeshare data analysis
 Replace the Project Title
 
-### Description
+### Description: Analyzes the bikeshare data between new york city, chicago and washington
 Describe what your project is about and what it does
 
 ### Files used
