@@ -18,19 +18,19 @@ def get_filters():
     """
     print('Hello! Let\'s explore some US bikeshare data!')
 
-    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+# Getting city selection from user
     city = input('Choose a city between Chicago,New York City and Washington: ').lower()
     while city not in ['chicago','new york city','washington']:
             print('Please enter a valid city')
             city = input('Choose a city between Chicago,New York City and Washington: ').lower()
 
-    # TO DO: get user input for month (all, january, february, ... , june)
+# Getting month selection from user
     month = input('Which month would you like to explore between January and June.If you want to look at all months please enter all: ').lower()
     while month not in ['all', 'january', 'february', 'march', 'april', 'may', 'june']:
             print('Please enter a valid month')
             month = input('Please choose between January and June.If you want to look at all months please enter all: ').lower()
 
-    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
+# Getting getting day selection from user
     day = input('Which day would you like to explore .If you want to look at all days please enter all: ').lower()
     while day not in ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
             print('Please enter a valid day')
@@ -169,7 +169,7 @@ def user_stats(df):
 
 # raw_data function is used to show raw data to the user when required
 def raw_data(df):
-    '''Asks user if raw data are required and displays raw data if necessary.''' 
+    '''Asks user if raw data are required and displays raw data if necessary.'''
     rows = 0
     while True:
             raw_data = input("Would you like to see the five entries of the raw data:").lower()
