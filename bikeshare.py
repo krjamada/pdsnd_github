@@ -78,7 +78,7 @@ def load_data(city, month, day):
         df = df[df['day_of_week'] == day.title()]
 
     return df
-
+#Displaying statistics regarding time of bike usage
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
@@ -100,6 +100,7 @@ def time_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+#Displaying statistics regarding place of bike usage
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -120,7 +121,7 @@ def station_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
+#Displaying statistics regarding duration of bike usage
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
@@ -139,7 +140,7 @@ def trip_duration_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
+#Displaying statistics regarding demographics of bike usage
 def user_stats(df):
     """Displays statistics on bikeshare users."""
 
@@ -167,7 +168,7 @@ def user_stats(df):
         print("\nThis took %s seconds." % (time.time() - start_time))
         print('-'*40)
 
-# raw_data function is used to show raw data to the user when required
+## raw_data function is used to show raw data to the user when required
 def raw_data(df):
     '''Asks user if raw data are required and displays raw data if necessary.'''
     rows = 0
