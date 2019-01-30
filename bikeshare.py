@@ -182,7 +182,7 @@ def raw_data(df):
             elif (raw_data == 'no'):
                 break
             else: print('Invalid input!')
-
+#Main function
 def main():
     while True:
         city, month, day = get_filters()
